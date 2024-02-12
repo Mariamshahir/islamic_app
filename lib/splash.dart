@@ -25,7 +25,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    Future.delayed(Duration(seconds: 2),(){
+    Future.delayed(Duration(seconds: 3),(){
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>HomeScreen(), ));
     });
   }
