@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         SuraDetails.rountName:(_) => SuraDetails(),
         AhadethDetails.rountName:(_) => AhadethDetails(),
       },
+      initialRoute: Splash.routeName,
     );
   }
 }
