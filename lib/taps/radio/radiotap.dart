@@ -5,7 +5,6 @@ import 'package:islamic/utils/app_colors.dart';
 
 class RadioTab extends StatelessWidget {
   const RadioTab({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(
