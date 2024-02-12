@@ -42,7 +42,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
                   children: [
                     SizedBox(width:30),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Text(args.name,textAlign:TextAlign.center,style: AppTheme.mediumTitleTextStyle,),
                     ),
                     Icon(Icons.play_circle ,size: 25,),
