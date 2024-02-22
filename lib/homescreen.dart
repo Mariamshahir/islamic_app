@@ -40,8 +40,12 @@ class _HomeScreenState extends State<HomeScreen> {
   AppBar buildAppBar() {
     return AppBar(
         automaticallyImplyLeading: false,
+          backgroundColor: AppColors.transparent,
+          centerTitle: true,
+          elevation: 0,
           title:  Text(
             context.getLocalizations.islami,
+            style: AppTheme.appBarTextStyle,
           ),
           leading: Builder(builder: (context)=>IconButton(onPressed: (){
             Scaffold.of(context).openDrawer();
@@ -54,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Drawer buildDrawer() {
     return Drawer(child:Container(
         child: Settings()
+        ,
       ));
   }
 
