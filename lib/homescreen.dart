@@ -3,9 +3,12 @@ import 'package:islamic/taps/quran/qurantab.dart';
 import 'package:islamic/taps/ahadeth/ahadethtab.dart';
 import 'package:islamic/taps/radio/radiotap.dart';
 import 'package:islamic/taps/sebha/sebhatab.dart';
+import 'package:islamic/taps/settings/settingstab.dart';
 import 'package:islamic/utils/aap_theme.dart';
 import 'package:islamic/utils/app_assets.dart';
 import 'package:islamic/utils/app_colors.dart';
+import 'package:islamic/utils/app_language.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "homescreen";
@@ -27,21 +30,33 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: AppColors.transparent,
         appBar: buildAppBar(),
+        drawer: buildDrawer(),
         bottomNavigationBar: buildBottomNavigation(),
         body: bodyContent[currentTapIndex],
       ),
     );
   }
 
-  AppBar buildAppBar() => AppBar(
-    backgroundColor: AppColors.transparent,
-    centerTitle: true,
-    elevation: 0,
-    title: const Text(
-      "إسلامي",
-      style: AppTheme.appBarTextStyle,
-    ),
-  );
+  AppBar buildAppBar() {
+    return AppBar(
+        automaticallyImplyLeading: false,
+          title:  Text(
+            context.getLocalizations.islami,
+          ),
+          leading: Builder(builder: (context)=>IconButton(onPressed: (){
+            Scaffold.of(context).openDrawer();
+          },
+              icon: Icon(Icons.settings,size: 27,color: AppColors.lightBlack,)
+          ))
+      );
+  }
+
+  Drawer buildDrawer() {
+    return Drawer(child:Container(
+        child: Settings()
+      ));
+  }
+
 
   Widget buildBottomNavigation() => Theme(
     data: ThemeData(
@@ -49,10 +64,10 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     child: BottomNavigationBar(
       items: [
-        buildBottomNavigationBarItem(AppAssets.iconRadio, "الراديو"),
-        buildBottomNavigationBarItem(AppAssets.iconSebha, "التسبيح"),
-        buildBottomNavigationBarItem(AppAssets.iconAhadeth, "الاحاديث"),
-        buildBottomNavigationBarItem(AppAssets.iconQuran, "القران"),
+        buildBottomNavigationBarItem(AppAssets.iconRadio, context.getLocalizations.radio),
+        buildBottomNavigationBarItem(AppAssets.iconSebha, context.getLocalizations.sebha,),
+        buildBottomNavigationBarItem(AppAssets.iconAhadeth, context.getLocalizations.ahadeth,),
+        buildBottomNavigationBarItem(AppAssets.iconQuran, context.getLocalizations.quran,),
       ],
       selectedItemColor: AppColors.lightBlack,
       unselectedItemColor: AppColors.white,
