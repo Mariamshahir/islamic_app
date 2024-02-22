@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:islamic/provider/theme_provider.dart';
 import 'package:islamic/utils/aap_theme.dart';
 import 'package:islamic/utils/app_assets.dart';
 import 'package:islamic/utils/app_colors.dart';
+import 'package:islamic/utils/app_language.dart';
+import 'package:provider/provider.dart';
 
 class SebhaTab extends StatefulWidget {
-  const SebhaTab({super.key});
+   SebhaTab({super.key});
 
   @override
   State<SebhaTab> createState() => _SebhaTabState();
@@ -15,9 +18,11 @@ class _SebhaTabState extends State<SebhaTab> {
   int prayerIndex = 0;
   double _turns = 0;
   final List<String> prayers = ["سُـبْحانَ اللهِ", "الحَمْـدُ لله ", "اللهُ أكْـبَر"];
+  late ThemeProvider themeProvider;
 
   @override
   Widget build(BuildContext context) {
+    themeProvider=Provider.of<ThemeProvider>(context);
     return Column(
       children: [
         SizedBox(height: 50,),
@@ -29,12 +34,12 @@ class _SebhaTabState extends State<SebhaTab> {
           ),
         ),
         SizedBox(height: 50,),
-        Text("عدد التسبيحات", style: AppTheme.mediumTitleTextStyle,),
+        Text(context.getLocalizations.countofElTasbih, style: themeProvider.mediumTitleTextStyle,),
         SizedBox(height: 30,),
         Container(
           width: 69,
           height: 81,
-          child: Center(child: Text("${counter + 1}", style: AppTheme.smallTitleTextStyle,)),
+          child: Center(child: Text("${counter + 1}", style: themeProvider.smallTitleTextStyle,)),
           decoration: BoxDecoration(
             color: AppColors.brownlight,
             borderRadius: BorderRadius.circular(25),
@@ -44,7 +49,7 @@ class _SebhaTabState extends State<SebhaTab> {
         Container(
           width: 137,
           height: 51,
-          child: Center(child: Text(prayers[prayerIndex], style: AppTheme.smallTitleTextStyle2,)),
+          child: Center(child: Text(prayers[prayerIndex], style: themeProvider.smallTitleTextStyle2,)),
           decoration: BoxDecoration(
             color: AppColors.brown,
             borderRadius: BorderRadius.circular(25),

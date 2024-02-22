@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:islamic/provider/theme_provider.dart';
 import 'package:islamic/utils/aap_theme.dart';
 import 'package:islamic/utils/app_assets.dart';
 import 'package:islamic/utils/app_colors.dart';
+import 'package:provider/provider.dart';
 
 class AppScaffold extends StatelessWidget {
   final String title;
@@ -11,21 +13,18 @@ class AppScaffold extends StatelessWidget {
   const AppScaffold({super.key,required this.title,required this.bady, this.bottomNavigationBar});
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider=Provider.of(context);
     return Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppAssets.background)),
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage(themeProvider.mainBackground)),
         ),
         child: Scaffold(
-          backgroundColor: AppColors.transparent,
           appBar: buildAppBar(),
           bottomNavigationBar:bottomNavigationBar,
           body: bady,
         ));
   }
   AppBar buildAppBar() => AppBar(
-    backgroundColor: AppColors.transparent,
-    centerTitle: true,
-    elevation: 0,
-    title: Text(title, style: AppTheme.appBarTextStyle,),
+    title: Text(title,),
   );
 }

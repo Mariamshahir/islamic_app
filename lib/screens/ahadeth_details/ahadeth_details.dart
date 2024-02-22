@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:islamic/model/screen_details_arg.dart';
 import 'package:islamic/utils/aap_theme.dart';
 import 'package:islamic/utils/app_colors.dart';
+import 'package:islamic/utils/app_language.dart';
 import 'package:islamic/widgets/app_scaffold.dart';
 
 class AhadethDetails extends StatefulWidget {
@@ -23,7 +24,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
     if(fileContent.isEmpty){
       readAhadethFile();
     }
-    return AppScaffold(title: "إسلامي",
+    return AppScaffold(title: context.getLocalizations.islami,
         bady: Container(
           margin: EdgeInsets.symmetric(
             vertical: MediaQuery.of(context).size.height * .07,

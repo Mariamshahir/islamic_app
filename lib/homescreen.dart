@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic/provider/theme_provider.dart';
 import 'package:islamic/taps/quran/qurantab.dart';
 import 'package:islamic/taps/ahadeth/ahadethtab.dart';
 import 'package:islamic/taps/radio/radiotap.dart';
@@ -8,6 +9,7 @@ import 'package:islamic/utils/aap_theme.dart';
 import 'package:islamic/utils/app_assets.dart';
 import 'package:islamic/utils/app_colors.dart';
 import 'package:islamic/utils/app_language.dart';
+import 'package:provider/provider.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -23,9 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of(context);
     return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(image: AssetImage(AppAssets.background)),
+      decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage(themeProvider.mainBackground)),
       ),
       child: Scaffold(
         backgroundColor: AppColors.transparent,
@@ -40,12 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
   AppBar buildAppBar() {
     return AppBar(
         automaticallyImplyLeading: false,
-          backgroundColor: AppColors.transparent,
-          centerTitle: true,
-          elevation: 0,
           title:  Text(
             context.getLocalizations.islami,
-            style: AppTheme.appBarTextStyle,
           ),
           leading: Builder(builder: (context)=>IconButton(onPressed: (){
             Scaffold.of(context).openDrawer();
@@ -64,9 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
   Widget buildBottomNavigation() => Theme(
-    data: ThemeData(
-      canvasColor: AppColors.orange,
-    ),
+    data: Theme.of(context).copyWith(canvasColor: Theme.of(context).primaryColor),
     child: BottomNavigationBar(
       items: [
         buildBottomNavigationBarItem(AppAssets.iconRadio, context.getLocalizations.radio),
@@ -74,8 +71,6 @@ class _HomeScreenState extends State<HomeScreen> {
         buildBottomNavigationBarItem(AppAssets.iconAhadeth, context.getLocalizations.ahadeth,),
         buildBottomNavigationBarItem(AppAssets.iconQuran, context.getLocalizations.quran,),
       ],
-      selectedItemColor: AppColors.lightBlack,
-      unselectedItemColor: AppColors.white,
       currentIndex: currentTapIndex,
       onTap: (index) {
         setState(() {

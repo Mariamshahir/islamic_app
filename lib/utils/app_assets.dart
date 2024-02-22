@@ -9,4 +9,6 @@ abstract class AppAssets{
   static const String iconSebha = "assets/images/icon_sebha.png";
   static const String sebha = "assets/images/sebha.png";
   static const String radio = "assets/images/radio_tap.png";
+  static const String darkBackGround = "assets/images/dark_background.png";
+  static const String darkSplash = "assets/images/dark_spalsh.png";
 }
