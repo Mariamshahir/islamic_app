@@ -25,15 +25,19 @@ abstract class AppTheme{
   static const TextStyle smallTitleTextStyle2 = TextStyle(
     fontSize: 25,
     fontWeight: FontWeight.w400,
-    color: AppColors.white,
+    color: AppColors.text,
   );
 
-
-  static TextStyle appBarDarkTextStyle = appBarDarkTextStyle.copyWith(color: AppColors.white);
-  static TextStyle mediumTitleDarkTextStyle = mediumTitleDarkTextStyle.copyWith(color: AppColors.white);
-  static TextStyle titleTapDark = titleTapDark.copyWith(color: AppColors.white);
-  static TextStyle smallTitleDarkTextStyle = smallTitleDarkTextStyle.copyWith(color: AppColors.white);
-  static TextStyle smallTitleDarkTextStyle2 = smallTitleDarkTextStyle2.copyWith(color: AppColors.white);
+  static const TextStyle appBarDarkTextStyle = TextStyle(color: AppColors.white,fontSize: 30,
+    fontWeight: FontWeight.bold,);
+  static const TextStyle mediumTitleDarkTextStyle = TextStyle(color: AppColors.white,fontSize: 25,
+    fontWeight: FontWeight.w600,);
+  static const TextStyle titleTapDark = TextStyle(color: AppColors.white,fontSize: 30,
+    fontWeight: FontWeight.w500,);
+  static const TextStyle smallTitleDarkTextStyle = TextStyle(color: AppColors.white,fontSize: 25,
+    fontWeight: FontWeight.w400,);
+  static const TextStyle smallTitleDarkTextStyle2 = TextStyle(color: AppColors.white,fontSize: 25,
+    fontWeight: FontWeight.w400,);
 
   static  ThemeData lightTheme= ThemeData(
     primaryColor: AppColors.orange,
@@ -56,12 +60,24 @@ abstract class AppTheme{
         surface: AppColors.transparent,
         onSurface: AppColors.transparent),
     iconTheme: const IconThemeData(color: AppColors.brown),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.orange,
         selectedItemColor: AppColors.lightBlack,
-      selectedIconTheme: IconThemeData(size: 40),
-        unselectedIconTheme: IconThemeData(size: 34)
-    )
+      selectedIconTheme: IconThemeData(size: 36),
+        unselectedIconTheme: IconThemeData(size: 34),
+      unselectedItemColor: Colors.white,
+    ),
+    switchTheme: SwitchThemeData(thumbColor: MaterialStateColor.resolveWith((states) => AppColors.gray),
+      trackColor: MaterialStateColor.resolveWith((states) => AppColors.lightBlack),
+    ),
+    dropdownMenuTheme: DropdownMenuThemeData(
+      textStyle: TextStyle(
+        color: Colors.white,
+        shadows: [
+          Shadow(color: Colors.grey),
+        ],
+      ),
+    ),
   );
   static  ThemeData darkTheme= ThemeData(
       primaryColor: AppColors.darkBlue,
@@ -70,7 +86,7 @@ abstract class AppTheme{
           backgroundColor: AppColors.transparent,
           centerTitle: true,elevation: 0,
           titleTextStyle: appBarTextStyle.copyWith(color: Colors.white)),
-      drawerTheme: const DrawerThemeData(backgroundColor: Colors.blueAccent),
+      drawerTheme: const DrawerThemeData(backgroundColor: Color(0xCC9A794A)),
       dividerColor: AppColors.yellow,
       colorScheme: const ColorScheme(brightness: Brightness.dark,
           primary: AppColors.darkBlue,
@@ -90,6 +106,19 @@ abstract class AppTheme{
           selectedIconTheme: IconThemeData(size: 36),
           unselectedIconTheme: IconThemeData(size: 34),
           unselectedItemColor: Colors.white,
-      )
+      ),
+      switchTheme: SwitchThemeData(
+        thumbColor: MaterialStateColor.resolveWith((states) => AppColors.cramy),
+        trackColor: MaterialStateColor.resolveWith((states) => AppColors.gray),
+      ),
+      // dropdownMenuTheme: DropdownMenuThemeData(
+      //   menuStyle: MenuStyle(backgroundColor: AppColors.brown),
+      //   textStyle: TextStyle(
+      //   color: Colors.white,
+      //   fontSize: 25,
+      //   shadows: [
+      //     Shadow(color: Colors.grey),
+      //   ],
+      // ),),
   );
 }

@@ -13,7 +13,7 @@ class QuranTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    themeProvider = Provider.of<ThemeProvider>(context);
+    themeProvider = Provider.of(context);
     return Column(
       children: [
         Expanded(flex:3,child: Center(child: Image.asset(AppAssets.quranTapLogo))),
@@ -23,7 +23,7 @@ class QuranTab extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               buildScreenContant(context),
-              VerticalDivider(thickness: 3,indent: 6,)
+              VerticalDivider(thickness: 3,indent: 6,color: themeProvider.dividerColor)
             ],
           ),
         )
@@ -35,7 +35,7 @@ class QuranTab extends StatelessWidget {
   Widget buildScreenContant(BuildContext context) {
     return Column(
       children: [
-           const Divider(thickness: 3),
+        Divider(thickness: 3,color: themeProvider.dividerColor),
              Row(
               children: [
                 Expanded(child: Text(context.getLocalizations.verses,
@@ -47,7 +47,7 @@ class QuranTab extends StatelessWidget {
                 )),
               ],
             ),
-            const Divider(thickness: 3),
+            Divider(thickness: 3,color: themeProvider.dividerColor),
             Expanded(flex:7,child: buildScreenListView())
       ],
     );

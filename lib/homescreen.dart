@@ -5,12 +5,10 @@ import 'package:islamic/taps/ahadeth/ahadethtab.dart';
 import 'package:islamic/taps/radio/radiotap.dart';
 import 'package:islamic/taps/sebha/sebhatab.dart';
 import 'package:islamic/taps/settings/settingstab.dart';
-import 'package:islamic/utils/aap_theme.dart';
 import 'package:islamic/utils/app_assets.dart';
 import 'package:islamic/utils/app_colors.dart';
 import 'package:islamic/utils/app_language.dart';
 import 'package:provider/provider.dart';
-
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "homescreen";
@@ -22,10 +20,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentTapIndex = 0;
   List<Widget> bodyContent = [ RadioTab(), SebhaTab(), AhadethTab(), QuranTab(),];
+  late ThemeProvider themeProvider;
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider themeProvider = Provider.of(context);
+    themeProvider = Provider.of(context);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(themeProvider.mainBackground)),
@@ -49,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
           leading: Builder(builder: (context)=>IconButton(onPressed: (){
             Scaffold.of(context).openDrawer();
           },
-              icon: Icon(Icons.settings,size: 27,color: AppColors.lightBlack,)
+              icon: Icon(Icons.settings,size: 27,color: themeProvider.setting,)
           ))
       );
   }

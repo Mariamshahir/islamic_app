@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamic/homescreen.dart';
 import 'package:islamic/provider/theme_provider.dart';
-import 'package:islamic/utils/app_assets.dart';
 import 'package:provider/provider.dart';
 
 class Splash extends StatefulWidget {
@@ -13,9 +12,10 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  late ThemeProvider themeProvider;
   @override
   Widget build(BuildContext context) {
-    ThemeProvider themeProvider = Provider.of(context);
+    themeProvider = Provider.of(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
