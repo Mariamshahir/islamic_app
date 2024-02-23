@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamic/model/screen_details_arg.dart';
 import 'package:islamic/provider/theme_provider.dart';
-import 'package:islamic/utils/app_colors.dart';
 import 'package:islamic/utils/app_language.dart';
 import 'package:islamic/widgets/app_scaffold.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +46,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
                     SizedBox(width:30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: Text(args.name,textAlign:TextAlign.center,style: themeProvider.mediumTitleTextStyle.copyWith(color: AppColors.yellow),),
+                      child: Text(args.name,textAlign:TextAlign.center,style: themeProvider.mediumTitleTextStyleText,),
                     ),
                     Icon(Icons.play_circle ,size: 25,),
                   ],
@@ -57,7 +56,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
               Expanded(child: SingleChildScrollView(child: Text(fileContent,
                 textAlign:TextAlign.center,
                 textDirection: TextDirection.rtl,
-                style: themeProvider.smallTitleTextStyle.copyWith(color: AppColors.yellow),))),
+                style: themeProvider.smallTitleTextStyleText,))),
             ],
           ) ,
         ));

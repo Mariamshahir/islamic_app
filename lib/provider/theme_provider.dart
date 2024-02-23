@@ -34,9 +34,13 @@ class ThemeProvider extends ChangeNotifier{
 
   TextStyle get mediumTitleTextStyle => currentTheme == ThemeMode.light ? AppTheme.mediumTitleTextStyle: AppTheme.mediumTitleDarkTextStyle;
 
+  TextStyle get mediumTitleTextStyleText => currentTheme == ThemeMode.light ? AppTheme.mediumTitleTextStyleText: AppTheme.mediumTitleDarkTextStyleText;
+
   TextStyle get titleTap => currentTheme == ThemeMode.light ? AppTheme.titleTap: AppTheme.titleTapDark;
 
   TextStyle get smallTitleTextStyle => currentTheme == ThemeMode.light ? AppTheme.smallTitleTextStyle: AppTheme.smallTitleDarkTextStyle;
+
+  TextStyle get smallTitleTextStyleText => currentTheme == ThemeMode.light ? AppTheme.smallTitleTextStyleText: AppTheme.smallTitleDarkTextStyleText;
 
   TextStyle get smallTitleTextStyle2 => currentTheme == ThemeMode.light ? AppTheme.smallTitleTextStyle2: AppTheme.smallTitleDarkTextStyle2;
 }
