@@ -79,8 +79,8 @@ abstract class AppTheme{
         onError: AppColors.error,
         background: AppColors.transparent,
         onBackground: AppColors.transparent,
-        surface: AppColors.transparent,
-        onSurface: AppColors.transparent),
+        surface: AppColors.lightBlack,
+        onSurface: AppColors.lightBlack),
     iconTheme: const IconThemeData(color: AppColors.brown),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.orange,
@@ -91,14 +91,6 @@ abstract class AppTheme{
     ),
     switchTheme: SwitchThemeData(thumbColor: MaterialStateColor.resolveWith((states) => AppColors.gray),
       trackColor: MaterialStateColor.resolveWith((states) => AppColors.lightBlack),
-    ),
-    dropdownMenuTheme: DropdownMenuThemeData(
-      textStyle: TextStyle(
-        color: Colors.white,
-        shadows: [
-          Shadow(color: Colors.grey),
-        ],
-      ),
     ),
   );
   static  ThemeData darkTheme= ThemeData(
@@ -120,8 +112,8 @@ abstract class AppTheme{
           onError: AppColors.error,
           background: AppColors.transparent,
           onBackground: AppColors.transparent,
-          surface: AppColors.transparent,
-          onSurface: AppColors.transparent),
+          surface: Colors.white,
+          onSurface: Colors.white),
       iconTheme: const IconThemeData(color: AppColors.darkBlue),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: AppColors.darkBlue,
@@ -134,14 +126,5 @@ abstract class AppTheme{
         thumbColor: MaterialStateColor.resolveWith((states) => AppColors.cramy),
         trackColor: MaterialStateColor.resolveWith((states) => AppColors.gray),
       ),
-      // dropdownMenuTheme: DropdownMenuThemeData(
-      //   menuStyle: MenuStyle(backgroundColor: AppColors.brown),
-      //   textStyle: TextStyle(
-      //   color: Colors.white,
-      //   fontSize: 25,
-      //   shadows: [
-      //     Shadow(color: Colors.grey),
-      //   ],
-      // ),),
   );
 }

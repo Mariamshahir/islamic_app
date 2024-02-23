@@ -16,12 +16,11 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     themeProvider = Provider.of(context);
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(themeProvider.splash)),
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage(themeProvider.splash)),
       ),
+      child: Scaffold(),
     );
   }
 @override

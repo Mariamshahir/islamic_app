@@ -1,5 +1,4 @@
 abstract class AppAssets{
-  static const String splash = "assets/images/splash.png";
   static const String background = "assets/images/main_background.png";
   static const String ahadethTapLogo = "assets/images/ahadeth_tap_logo.png";
   static const String quranTapLogo = "assets/images/quran_tap_logo.png";
@@ -12,4 +11,5 @@ abstract class AppAssets{
   static const String darkBackGround = "assets/images/dark_background.png";
   static const String darkSplash = "assets/images/dark_spalsh.png";
   static const String darkSebha = "assets/images/dark_sebha.png";
+  static const String splash = "assets/images/spalsh.png";
 }
