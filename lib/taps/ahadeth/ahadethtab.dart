@@ -49,17 +49,17 @@ class AhadethTab extends StatelessWidget {
         itemCount: 50,
         itemBuilder: (context,index){
           String hadethName = "الحديث رقم ${index + 1}";
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              InkWell(onTap: (){
-                ScreenDetailsArgs arguments =ScreenDetailsArgs(fileName: "h${index+1}.txt"
-                    , name: hadethName);
-                Navigator.pushNamed(context, AhadethDetails.rountName,arguments:arguments);
-              },
-                  child: Expanded(child: Text(hadethName,style: themeProvider.smallTitleTextStyle,textAlign: TextAlign.center,))),
-            ],
-          );
+          return InkWell(onTap: (){
+            ScreenDetailsArgs arguments =ScreenDetailsArgs(fileName: "h${index+1}.txt"
+                , name: hadethName);
+            Navigator.pushNamed(context, AhadethDetails.rountName,arguments:arguments);
+          },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(hadethName,style: themeProvider.smallTitleTextStyle,textAlign: TextAlign.center,),
+                ],
+              ));
         });
   }
 
