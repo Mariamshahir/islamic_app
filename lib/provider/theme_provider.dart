@@ -10,10 +10,6 @@ class ThemeProvider extends ChangeNotifier{
     currentTheme = darkThemeSwitchValue ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
-  // Color get activeColor => currentTheme == ThemeMode.light ? AppColors.lightBlack : AppColors.gray;
-  //
-  // Color get activeTrackColor => currentTheme == ThemeMode.light ? AppColors.gray : AppColors.lightBlack;
-
   Color get setting => currentTheme == ThemeMode.light ? AppColors.lightBlack : Colors.white;
 
   Color get counter => currentTheme == ThemeMode.light ? AppColors.brownlight : AppColors.darkBlue80;
