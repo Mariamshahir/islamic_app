@@ -10,11 +10,17 @@ import 'package:islamic/splash.dart';
 import 'package:islamic/utils/aap_theme.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  LanguageProvider languageProvider =LanguageProvider();
+  await languageProvider.setItems();
+
+  ThemeProvider themeProvider =ThemeProvider();
+  await themeProvider.setItems();
   runApp(MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LanguageProvider()),
-        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => languageProvider),
+        ChangeNotifierProvider(create: (_) => themeProvider),
       ],
       child: const MyApp()),
   );

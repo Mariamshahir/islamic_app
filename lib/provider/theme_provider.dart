@@ -2,12 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:islamic/utils/aap_theme.dart';
 import 'package:islamic/utils/app_assets.dart';
 import 'package:islamic/utils/app_colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier{
   ThemeMode currentTheme = ThemeMode.light;
+  SharedPreferences? sharedPreferences;
+
+  Future<void> setItems()async{
+    sharedPreferences=await SharedPreferences.getInstance();
+    if(getTheme()??false){
+      currentTheme=ThemeMode.dark;
+    }else{
+      currentTheme=ThemeMode.light;
+    }
+  }
 
   toggleTheme(bool darkThemeSwitchValue){
     currentTheme = darkThemeSwitchValue ? ThemeMode.dark : ThemeMode.light;
+    saveTheme(false);
     notifyListeners();
   }
   Color get setting => currentTheme == ThemeMode.light ? AppColors.lightBlack : Colors.white;
@@ -43,4 +55,12 @@ class ThemeProvider extends ChangeNotifier{
   TextStyle get smallTitleTextStyleText => currentTheme == ThemeMode.light ? AppTheme.smallTitleTextStyleText: AppTheme.smallTitleDarkTextStyleText;
 
   TextStyle get smallTitleTextStyle2 => currentTheme == ThemeMode.light ? AppTheme.smallTitleTextStyle2: AppTheme.smallTitleDarkTextStyle2;
+
+  Future<void> saveTheme(bool isDark)async{
+    await sharedPreferences!.setBool('isDark', isDark);
+  }
+
+  bool? getTheme(){
+    return sharedPreferences!.getBool('isDark');
+  }
 }
