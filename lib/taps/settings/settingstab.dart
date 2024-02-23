@@ -14,6 +14,7 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   String selectLanguage = "en";
+  bool isDarkTheme = false;
   late LanguageProvider provider;
   late ThemeProvider themeProvider;
 
@@ -69,11 +70,20 @@ class _SettingsState extends State<Settings> {
         Switch(
             activeColor: Provider.of(context),
             activeTrackColor: AppColors.lightBlack,
-            value: themeProvider.currentTheme == ThemeMode.dark,
+            value: isDarkTheme,
             onChanged: (newValue) {
+              setState(() {
+                isDarkTheme = newValue;
+              });
               themeProvider.toggleTheme(newValue);
             })
       ],
     );
+  }
+  @override
+  void initState() {
+    super.initState();
+    themeProvider = Provider.of(context, listen: false);
+    isDarkTheme = themeProvider.currentTheme == ThemeMode.dark;
   }
 }

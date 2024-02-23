@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:islamic/utils/aap_theme.dart';
 import 'package:islamic/utils/app_assets.dart';
@@ -10,18 +11,19 @@ class ThemeProvider extends ChangeNotifier{
 
   Future<void> setItems()async{
     sharedPreferences=await SharedPreferences.getInstance();
-    if(getTheme()??false){
-      currentTheme=ThemeMode.dark;
-    }else{
+    if(getTheme()==null){
       currentTheme=ThemeMode.light;
+    }else{
+      currentTheme = getTheme()! ? ThemeMode.dark : ThemeMode.light;
     }
   }
 
   toggleTheme(bool darkThemeSwitchValue){
     currentTheme = darkThemeSwitchValue ? ThemeMode.dark : ThemeMode.light;
-    saveTheme(false);
+    saveTheme(darkThemeSwitchValue);
     notifyListeners();
   }
+
   Color get setting => currentTheme == ThemeMode.light ? AppColors.lightBlack : Colors.white;
 
   Color get counter => currentTheme == ThemeMode.light ? AppColors.brownlight : AppColors.darkBlue80;
